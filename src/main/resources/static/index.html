@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html data-ng-app="translatorProject">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>App Demo</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/style.min.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/table-media.css">
+<link rel="stylesheet" href="css/table.css">
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="img/favicon.png">
+
+<script src="js/modernizr.js"></script>
+
+</head>
+<body>
+	<!-- Header -->
+	<myDirective></myDirective>
+	<nav class="navbar navbar-default header" role="navigation">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<!-- <a class="navbar-brand" href="#">Brand</a> -->
+		</div>
+	</nav>
+
+	<!-- sideabr -->
+	<!-- <div class="sidebar">
+       <ul>
+       	<li><a href="javascript:void(0);">Tools</a>
+          <ul>
+            <li><a href="#/">Define Application</a></li>
+          </ul>
+        </li>  
+        <li><a href="javascript:void(0);">Application</a>
+          <ul>
+            <li><a href="#/project">App1</a></li>
+          </ul>
+        </li>        
+      </ul> 
+    </div> -->
+	<!-- Sidebar Holder -->
+	<nav id="sidebar" ng-controller="viewDashborad">
+		<div class="sidebar-header">
+			<h3>App Demo</h3>
+		</div>
+		<ul class="list-unstyled components">
+			<li><a href="javascript:void(0);" data-target="#homeSubmenu"
+				data-toggle="collapse" aria-expanded="false">Tools</a>
+				<ul class="collapse list-unstyled" id="homeSubmenu">
+					<li><a href="#/createApplication">Define Application</a></li>
+				</ul></li>
+			<li><a href="javascript:void(0);" data-target="#pageSubmenu"
+				data-toggle="collapse" aria-expanded="false">Applications</a>
+				<ul class="collapse list-unstyled" id="pageSubmenu">
+					<li ng-repeat="app in appList" ><a
+						href="#/application/{{app.id}}">{{app.name}}</a></li>
+					<!-- <li><a href="#/application/3">App3</a></li> -->
+				</ul></li>
+		</ul>
+	</nav>
+
+	<!-- Rightbar -->
+	<div class="rightbar">
+		<div ng-view=""></div>
+	</div>
+
+	<!-- Scripts -->
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-route.min.js"></script>
+
+	<!-- main mudule & Controller -->
+	<script src="app/appModule.js"></script>
+	<script src="app/appControl.js"></script>
+
+	<!-- dashboard mudule & Controller -->
+	<script src="app/dashboard/dashModule.js"></script>
+	<script src="app/dashboard/dashControl.js"></script>
+	<script src="app/dashboard/dashService.js"></script>
+
+	<!-- project mudule & Controller -->
+	<script src="app/application/application.module.js"></script>
+	<script src="app/application/application.controller.js"></script>
+	<script src="app/application/createApplication.controller.js"></script>
+	<script src="app/application/application.service.js"></script>
+
+
+</body>
+</html>

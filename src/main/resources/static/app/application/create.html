@@ -1,0 +1,74 @@
+
+<!-- Rightbar -->
+<div class="col-xs-12 add_project">
+	<h3 class="main_heading">Add Application</h3>
+	<form name="appForm">
+		<div class="col-md-12 form-group">
+			<input name="appName" type="text" placeholder="Application Name"
+				class="form-control" ng-model="application.name" required />
+			<div ng-show="appForm.appName.$touched && appForm.appName.$invalid">
+				<strong> Application name is required field ! </strong>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+			<input type="text" name="label" placeholder="Lable Name"
+				class="form-control" ng-model="newProperty.labelName" required />
+			<div ng-show="appForm.label.$touched && appForm.label.$invalid">
+				<strong> Label is required field ! </strong>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+			<select class="form-control" ng-options="type for type in fieldTypes"
+				ng-model="newProperty.fieldType">
+			</select>
+		</div>
+		<div class="col-xs-12 col-sm-4 col-md-4 form-group">
+			<select class="form-control"
+				ng-options="dataType for dataType in fieldDataTypes"
+				ng-model="newProperty.fieldDataType">
+			</select>
+		</div>
+		<div class="col-md-12">
+			<button type="button" class="btn btn-success pull-right"
+				ng-click="addProperty()"
+				ng-disabled="appForm.$invalid || appForm.appName.$invalid">Add</button>
+		</div>
+	</form>
+</div>
+
+<div class="col-xs-12 add_project">
+	<h3 class="main_heading">List of Properties</h3>
+	<div class="col-xs-12 ">
+		<form>
+			<table class="table table-responsive view_list" id="page-wrap">
+				<thead>
+					<tr>
+						<!-- <th>Application Name</th> -->
+						<th>Lable Name</th>
+						<th>Type</th>
+						<th>Type Value</th>
+						<!-- <th>Translator</th>
+                  <th>Translation Due Date</th> -->
+						<!--  <th>Action</th> -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="property in application.applicationMetaData">
+						<!-- <td>{{dash.pdate}}</td> -->
+						<td>{{property.labelName}}</td>
+						<td>{{property.fieldType}}</td>
+						<td>{{property.fieldDataType}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="col-md-12">
+				<button type="button" class="btn btn-success pull-right"
+					style="margin-top: 10px;" ng-click="genrateApplication()"
+					ng-disabled="application.applicationMetaData.length ==0 || appForm.appName.$invalid">Generate</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+

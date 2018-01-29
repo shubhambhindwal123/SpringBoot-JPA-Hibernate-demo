@@ -1,0 +1,80 @@
+/*
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #0f2021;
+    margin-bottom: 5px;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 190px !important;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 0;
+    left: 0;
+    width: 180px;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /*
+  View list Label the data
+  */
+  .view_list td:nth-of-type(1):before { content: "Date Project is Assigned"; background: #C8C79B; padding: 8px 10px;}
+  .view_list td:nth-of-type(2):before { content: "Project Name"; background: #C8C79B; padding: 8px 10px; }
+  .view_list td:nth-of-type(3):before { content: "Word Count"; background: #C8C79B; padding: 8px 10px; }
+  .view_list td:nth-of-type(4):before { content: "Due Date to Client"; background: #C8C79B; padding: 8px 10px; }
+  .view_list td:nth-of-type(5):before { content: "Translator"; background: #C8C79B; padding: 8px 10px; }
+  .view_list td:nth-of-type(6):before { content: "Translation Due Date"; background: #C8C79B; padding: 8px 10px; }
+
+  /*
+  Project list Label the data
+  */
+  .project_list td:nth-of-type(1):before { content: "Project Name"; background: #C8C79B; padding: 8px 10px;}
+  .project_list td:nth-of-type(2):before { content: "Word Count"; background: #C8C79B; padding: 8px 10px; }
+  .project_list td:nth-of-type(3):before { content: "Assigned Translator"; background: #C8C79B; padding: 8px 10px; }
+  .project_list td:nth-of-type(4):before { content: "Updates"; background: #C8C79B; padding: 8px 10px; }
+
+  /*
+  Translator list Label the data
+  */
+  .trans_list td:nth-of-type(1):before { content: "Translator Name"; background: #C8C79B; padding: 8px 10px;}
+  .trans_list td:nth-of-type(2):before { content: "Translator Speed"; background: #C8C79B; padding: 8px 10px; }
+  .trans_list td:nth-of-type(3):before { content: "Assigned Project"; background: #C8C79B; padding: 8px 10px; }
+  .trans_list td:nth-of-type(4):before { content: "Updates"; background: #C8C79B; padding: 8px 10px; }
+
+  /*
+  Review list Label the data
+  */
+  .review_list td:nth-of-type(1):before { content: "Review Name"; background: #C8C79B; padding: 8px 10px;}
+  .review_list td:nth-of-type(2):before { content: "Due Date"; background: #C8C79B; padding: 8px 10px; }
+  .review_list td:nth-of-type(3):before { content: "Updates"; background: #C8C79B; padding: 8px 10px; }
+}
+
+<!--<![endif]-->

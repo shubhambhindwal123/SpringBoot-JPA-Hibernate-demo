@@ -1,0 +1,221 @@
+html,body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+  background: #F4F6F6;
+}
+a{
+  text-decoration: none;
+  outline: 0;
+}
+a:hover, a:focus{
+  text-decoration: none;
+  outline: 0;
+}
+@mixin grayscale($grayscale) {
+  -ms-filter: grayscale(50%);
+  -moz-filter: grayscale(50%);
+  -webkit-filter: grayscale(50%);
+  filter: grayscale(50%);
+}
+.header{
+  display: none;
+}
+.navbar{
+  margin: 0;
+  border: 0px;
+  border-radius: 0px;
+  background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(162,179,171,1) 100%);
+  background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(162,179,171,1) 100%);
+  background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(162,179,171,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#a2b3ab',GradientType=1 );
+}
+.sidebar{
+  width: 250px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: url(../images/side.jpg);
+  height: 100%;
+  box-shadow:0px 4px 4px 0px #4E4E4E;
+  @include grayscale(50%);
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    li{
+      margin-bottom: 10px;
+      a{
+        color: #C8C79B;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        display: block;
+        padding: 10px 10px;
+        background: #fff5;
+      }
+      a:hover{
+        background: #fff8;
+      }
+    }
+  }
+}
+.rightbar{
+  width: calc(100% - 250px);
+  margin-left: 250px;
+  padding: 20px;
+}
+.translator{
+  background: #fff;
+  box-shadow: 0px 0px 5px 0px #CBCBCB;
+  padding: 20px;
+  .trans-field{
+    height: 45px;
+    color: #012426;
+  }
+  label{
+    margin: 0;
+    background: #C8C79B;
+    padding: 5px;
+    color: #012452;
+    font-size: 12px;
+    width: 120px;
+    text-align: center;
+  }
+  .btn{
+    width: 100%;
+    background: #C8C79B;
+    height: 40px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    color: #012426;
+  }
+}
+
+.table{
+  th{
+    background: #C8C79B;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  td{
+    font-size: 13px;
+    font-weight: 400;
+  }
+}
+.table > thead > tr > th {
+    vertical-align: top;
+    border-bottom: 1px solid #0f2021;
+    border-top: 1px solid #0f2021 !important;
+    color: #012426;
+}
+.table > tbody > tr > td{
+  border-top: 1px solid #0f2021;
+}
+#files{
+  opacity: 0;
+  height: 45px;
+  position: absolute;
+  z-index: 999;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+.selectFile{
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  line-height: 40px;
+  padding: 0;
+  transition: .3s;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  width: 100%;
+  height: 45px;
+}
+#selectedFiles{
+  margin: 5px 0;
+}
+#selectedFiles img{
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin: 5px;
+  box-shadow: 0px 0px 2px 0px #000;
+  object-fit: cover;
+}
+.translator .download-btn{
+  width: 150px;
+  font-weight: 400;
+  color: #012426;
+  font-size: 16px;
+  margin: 20px 0 0;
+  float: right;
+  &:hover{
+    background: #BAB995;
+  }
+}
+.main_heading{
+  text-align: center;
+  text-transform: uppercase;
+  color: #01354B;
+  margin: 20px 0;
+}
+.upProject{
+  a{
+    margin: 0 5px;
+    vertical-align: top;
+    img{
+      width: 16px;
+    }
+  }
+}
+.add_project{
+  margin: 40px 0;
+  background: #fff;
+  box-shadow: 0px 0px 5px 0px #CBCBCB;
+  padding: 20px;
+  form{
+    padding: 20px 0 0;
+    border-top: 1px solid #eee;
+  }
+  .form-group{
+    padding: 0 5px;
+    input[type="submit"]{
+      background: #91DC5A;
+      width: 100%;
+      height: 34px;
+      color: #204a5d;
+      border: 0px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+  }
+}
+
+// Media screens
+@media screen and (max-width: 640px) {
+  .header{
+    display: block;
+  }
+  .sidebar{
+    top: 50px;
+    display: none;
+    z-index: 999;
+  }
+  .rightbar{
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .translator{
+    padding: 10px;
+  }
+}

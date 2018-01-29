@@ -1,0 +1,31 @@
+//@SpringBootApplication same as @Configuration @EnableAutoConfiguration @ComponentScan
+//@Configuration 
+Indicates that a class declares one or more @Bean methods and may be processed by the Spring container 
+to generate bean definitions and service requests for those beans at runtime .
+
+All @Configuration classes are subclassed at startup-time with CGLIB. In the subclass, the child method checks the container first for any cached (scoped) beans before it calls the parent method and creates a new instance.
+This means that your the calls to @Bean methods are proxied via CGLIB and therefore the cached version of the bean is returned (a new one is not created).
+
+The default scope of @Beans is SINGLETON, if you specify a different scope such as PROTOTYPE the call will be passed to the original method.
+
+Singleton: It returns a single bean instance per Spring IoC container.This single instance is stored in a cache of such singleton beans, and all subsequent requests and references for that named bean return the cached object. If no bean scope is specified in the configuration file, singleton is default. Real world example: connection to a database
+Prototype: It returns a new bean instance each time it is requested. It does not store any cache version like singleton. Real world example: declare configured form elements (a textbox configured to validate names, e-mail addresses for example) and get "living" instances of them for every form being created
+Request: It returns a single bean instance per HTTP request. Real world example: information that should only be valid on one page like the result of a search or the confirmation of an order. The bean will be valid until the page is reloaded.
+Session: It returns a single bean instance per HTTP session (User level session). Real world example: to hold authentication information getting invalidated when the session is closed (by timeout or logout). You can store other user information that you don't want to reload with every request here as well.
+GlobalSession: It returns a single bean instance per global HTTP session. It is only valid in the context of a web-aware Spring ApplicationContext (Application level session). It is similar to the Session scope and really only makes sense in the context of portlet-based web applications. The portlet specification defines the notion of a global Session that is shared among all of the various portlets that make up a single portlet web application. Beans defined at the global session scope are bound to the lifetime of the global portlet Session.
+
+//@Bean
+ is a method-level annotation
+@SpringBootApplication 
+
+@EnableAutoConfiguration
+Spring Boot auto-configuration attempts to automatically configure your Spring application based on the jar dependencies that you have added. For example, If HSQLDB is on your classpath, and you have not manually configured any database connection beans, then we will auto-configure an in-memory database.
+
+@ComponentScan
+Spring needs to know the packages to scan for annotated components. We can use @ComponentScan annotation to specify the base packages to scan. Any class which is annotated with @Component will be scanned for registered. Even classes annotated with @Configuration are candidates for component scanning as @Configuration annotation is meta-annotated with @Component.
+
+@EnableTransactionManagement
+At a high level, Spring creates proxies for all the classes annotated with @Transactional – either on the class or on any of the methods. The proxy allows the framework to inject transactional logic before and after the method being invoked – mainly for starting and committing the transaction.
+What is important to keep in mind is that, if the transactional bean is implementing an interface, by default the proxy will be a Java Dynamic Proxy. This means that only external method calls that come in through the proxy will be intercepted – any self-invocation calls will not start any transaction – even if the method is annotated with @Transactional.
+Another caveat of using proxies is that only public methods should be annotated with @Transactional – methods of any other visibilities will simply ignore the annotation silently as these are not proxied.
+

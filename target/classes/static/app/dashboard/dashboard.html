@@ -1,0 +1,72 @@
+
+
+    <!-- Rightbar -->
+      <div class="col-xs-12 add_project">
+        <h3 class="main_heading">Add Application</h3>    
+        <form>
+          <div class="col-md-12 form-group">
+            <input type="text" placeholder="Application Name" class="form-control" />
+          </div>    
+          <div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            <input type="text" placeholder="Lable Name" class="form-control" />
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            <select class="form-control">
+              <option selected="selected">Select Type</option>
+              <option>Text</option>
+            </select>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-md-4 form-group">
+            <select class="form-control">
+              <option selected="selected">Select Type Value</option>
+              <option>String</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <button type="submit" class="btn btn-success pull-right">Add</button>
+          </div>
+        </form>         
+      </div>
+
+      <div class="col-xs-12 add_project">
+        <h3 class="main_heading">List Applications</h3>
+        <div class="col-xs-12 " ng-controller="viewDashborad">
+          <form>
+            <table class="table table-responsive view_list" id="page-wrap">
+              <thead>
+                <tr>
+                  <!-- <th>Application Name</th> -->
+                  <th>Lable Name</th>
+                  <th>Type</th>
+                  <th>Type Value</th>
+                  <!-- <th>Translator</th>
+                  <th>Translation Due Date</th> -->
+                 <!--  <th>Action</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="project in projects">
+                  <tr ng-repeat="dash in dashboard">
+                    <!-- <td>{{dash.pdate}}</td> -->
+                    <td>{{dash.pname}}</td>
+                    <td>{{dash.wcount}}</td>
+                    <td>{{dash.cdate}}</td>
+                    <!-- <td>{{dash.trans}}</td>
+                    <td>{{dash.tdate}}</td> -->
+                    <!-- <td class="upProject">
+                      <a href="javascript:void(0);"><img src="images/edit.png"></a>
+                      <a href="javascript:void(0);"><img src="images/delete.png"></a>
+                    </td> -->
+                  </tr>                
+                </tr>
+              </tbody>
+            </table>
+            <div class="col-md-12">
+              <button type="submit" class="btn btn-success pull-right" style="margin-top: 10px;">Generate</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+     
+
